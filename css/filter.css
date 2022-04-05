@@ -1,0 +1,58 @@
+.filter-table{
+    width:99%;
+    padding:5px;
+    outline: grey solid 2px;
+}
+
+.filter-table tr, .filter-table td{
+    padding:5px;
+}
+
+.filter-table thead{
+    position:sticky;
+    top:0;
+    background-color: #333;
+    color:white;
+}
+
+.filter-table tbody tr{
+    height:100px;
+}
+
+.filter-table tbody tr td img{
+    height:100px;
+    object-fit: contain;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.product-info{
+    width:65%;
+}
+
+.product-price{
+    width:15%;
+}
+
+.product-category{
+    width:20%;
+}
+
+.search-row{
+    display:flex;
+    align-items:center;
+}
+
+.search-row div, .search-row input{
+    margin-right:5px;
+}
+
+table.js-sort-table.js-sort-asc thead tr > .js-sort-active:not(.js-sort-none)::after {
+    content: "▼" !important;
+}
+
+table.js-sort-table.js-sort-desc thead tr > .js-sort-active:not(.js-sort-none)::after {
+    content: "▲" !important;
+}
