@@ -19,7 +19,7 @@
   	<link rel="stylesheet" href="dist/css/skins/_all-skins.mins.css">
     <!-- Magnify -->
     <link rel="stylesheet" href="magnify/magnify.min.css">
-
+    <link rel="stylesheet" href="css/footer.css">
 
   	<!-- Google Font -->
   	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

@@ -38,6 +38,7 @@
               ?>
             </ul>
           </li>
+          <li><a href="/ggclothing/filter.php">BROWSE</a></li>
         </ul>
         <form method="POST" class="navbar-form navbar-left" action="search.php">
           <div class="input-group">

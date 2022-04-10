@@ -71,7 +71,7 @@
                   $total += $subtotal;
                 }
 
-                echo "<h3>&#36; ".number_format_short($total, 2)."</h3>";
+                echo "<h3>PHP ".number_format_short($total, 2)."</h3>";
               ?>
               <p>Total Sales</p>
             </div>
@@ -138,7 +138,7 @@
                   $total += $subtotal;
                 }
 
-                echo "<h3>&#36; ".number_format_short($total, 2)."</h3>";
+                echo "<h3>PHP ".number_format_short($total, 2)."</h3>";
                 
               ?>
 
@@ -180,7 +180,25 @@
               <div class="chart">
                 <br>
                 <div id="legend" class="text-center"></div>
-                <canvas id="barChart" style="height:350px"></canvas>
+                <canvas id="barChart" style="height:200px"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Past 7 Days Sales Report</h3>
+              <div class="box-tools pull-right">
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+                <br>
+                <div id="week-legend" class="text-center"></div>
+                <canvas id="plots" style="width:100%; max-width:100%; height:200px;"></canvas>
               </div>
             </div>
           </div>
@@ -288,6 +306,73 @@ $(function(){
     window.location.href = 'home.php?year='+$(this).val();
   });
 });
+$(function(){
+  //PAST 7-DAY SALES
+  // Example datasets for X and Y-axes 
+  <?php
+      $days = [];
+      $sales = array();
+      for($i = 0; $i < 7; $i++){
+          //$sales_count = $conn->prepare("SELECT sum() FROM sales WHERE DATE(sales_date) = CURDATE() - INTERVAL $i DAY");
+          $sales_count = $conn->prepare("SELECT * FROM details LEFT JOIN sales ON sales.id=details.sales_id LEFT JOIN products ON products.id=details.product_id WHERE DATE(sales_date) = CURDATE() - INTERVAL $i DAY");
+          $sales_count->execute();
+          $total = 0;
+          foreach($sales_count as $srow){
+            $subtotal = $srow['price']*$srow['quantity'];
+            $total += $subtotal;    
+          }
+          array_push($sales, round($total, 2));
+          //$sales_count->execute();
+          $day = $conn->prepare("SELECT DAYNAME(CURDATE() - INTERVAL $i DAY) AS week_day");
+          $day->execute();
+          $day = $day->fetchAll(PDO::FETCH_ASSOC);
+          foreach ($day as $day) {
+            $days[$i] = $day['week_day'];
+          }
+          //$day = mysqli_fetch_array(mysqli_query($link,"SELECT DAYNAME(CURDATE() - INTERVAL $i DAY) AS week_day"));
+          //$days[$i] = $day;
+      }
+  ?>
+  plotChartCanvas = document.getElementById("plots").getContext("2d");;
+  var plotChart = new Chart(plotChartCanvas)
+  var plotChartData = {
+    labels  : [<?php for($i = 6; $i >= 0; $i--){ echo '\''.$days[$i].'\''.','; } ?>],
+    datasets: [
+      {
+        label               : 'SALES',
+        fillColor           : 'rgba(60,141,188,0.9)',
+        strokeColor         : 'rgba(60,141,188,0.8)',
+        pointColor          : '#3b8bba',
+        pointStrokeColor    : 'rgba(60,141,188,1)',
+        pointHighlightFill  : '#fff',
+        pointHighlightStroke: 'rgba(60,141,188,1)',
+        data                : [<?php for($i = 6; $i >= 0; $i--){ echo $sales[$i].','; } ?>]
+      }
+    ]
+  }
+  var plotChartOptions                  = {
+    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+    scaleBeginAtZero        : true,
+    //Boolean - Whether grid lines are shown across the chart
+    scaleShowGridLines      : true,
+    //String - Colour of the grid lines
+    scaleGridLineColor      : 'rgba(0,0,0,.05)',
+    //Number - Width of the grid lines
+    scaleGridLineWidth      : 1,
+    //Boolean - Whether to show horizontal lines (except X axis)
+    scaleShowHorizontalLines: true,
+    //Boolean - Whether to show vertical lines (except Y axis)
+    scaleShowVerticalLines  : true,
+    //String - A legend template
+    legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+    //Boolean - whether to make the chart responsive
+    responsive              : true,
+    maintainAspectRatio     : true
+  }
+  plotChartOptions.datasetFill = false
+  var plotChart = plotChart.Line(plotChartData, plotChartOptions)
+});
+
 </script>
 </body>
 </html>

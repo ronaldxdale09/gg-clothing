@@ -160,7 +160,7 @@ paypal.Button.render({
     env: 'sandbox', // change for production if app is live,
 
 	client: {
-        sandbox:    'ASb1ZbVxG5ZFzCWLdYLi_d1-k5rmSjvBZhxP2etCxBKXaJHxPba13JJD_D3dTNriRbAv3Kp_72cgDvaZ',
+        sandbox:    'AUwXHHUgrc525NVg9dA5EBY0A5m48G86-U9EqAYEdiutqvq_Nht-lWPhXK1sFJMsRBwKc8Zwx3Tn5TDD',
         //production: 'AaBHKJFEej4V6yaArjzSx9cuf-UYesQYKqynQVCdBlKuZKawDDzFyuQdidPOBSGEhWaNQnnvfzuFB9SM'
     },
 
@@ -179,7 +179,7 @@ paypal.Button.render({
                     	//total purchase
                         amount: { 
                         	total: total, 
-                        	currency: 'USD' 
+                        	currency: 'PHP' 
                         }
                     }
                 ]
