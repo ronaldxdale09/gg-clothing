@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
 	<div class="box box-solid">
 	  	<div class="box-header with-border">
 	    	<h3 class="box-title"><b>Most Viewed Today</b></h3>
@@ -20,7 +20,7 @@
 	    	<ul>
 	  	</div>
 	</div>
-</div>
+</div> -->
 
 
 <div class="row">

@@ -4817,7 +4817,7 @@ table.text-center,table.text-center td,table.text-center th{
     .no-print,.main-sidebar,.left-side,.main-header,.content-header{
         display:none !important
     }
-    .content-wrapper,.right-side,.main-footer{
+    .content-wrapper,.right-side{
         margin-left:0 !important;
         min-height:0 !important;
         -webkit-transform:translate(0, 0) !important;
