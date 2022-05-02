@@ -92,6 +92,7 @@
   	<?php include 'includes/footer.php'; ?>
 </div>
 
-<?php include 'includes/scripts.php'; ?>
+<?php include 'includes/scripts.php'; //Test Comment ?>
 </body>
 </html>
+

@@ -160,8 +160,8 @@ paypal.Button.render({
     env: 'sandbox', // change for production if app is live,
 
 	client: {
-        sandbox:    'AUwXHHUgrc525NVg9dA5EBY0A5m48G86-U9EqAYEdiutqvq_Nht-lWPhXK1sFJMsRBwKc8Zwx3Tn5TDD',
-        //production: 'AaBHKJFEej4V6yaArjzSx9cuf-UYesQYKqynQVCdBlKuZKawDDzFyuQdidPOBSGEhWaNQnnvfzuFB9SM'
+        sandbox:    'AS3DVfzkbbzEy3UooaC-ymAc-z-KKmnqKdbIjZIaOPwawI7c_fzweicM4o1RcZ3HY2cMSjRGYTuBEnuN',
+        //production: '' // Will Need Paypal Confirmation
     },
 
     commit: true, // Show a 'Pay Now' button
