@@ -8,6 +8,8 @@ require "PHPMailer/PHPMailerAutoload.php";
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$email = $_POST['email'];
+		$address = $_POST['address'];
+		$contact = $_POST['contact'];
 		$password = $_POST['password'];
 		$repassword = $_POST['repassword'];
 
@@ -39,8 +41,8 @@ require "PHPMailer/PHPMailerAutoload.php";
 				$code=substr(str_shuffle($set), 0, 12);
 
 				try{
-					$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname, activate_code, created_on) VALUES (:email, :password, :firstname, :lastname, :code, :now)");
-					$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'code'=>$code, 'now'=>$now]);
+					$stmt = $conn->prepare("INSERT INTO users (email, password, firstname, lastname,address,contact_info, activate_code, created_on) VALUES (:email, :password, :firstname, :lastname, :address, :contact_info, :code, :now)");
+					$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname,'address'=>$address,'contact_info'=>$contact, 'code'=>$code, 'now'=>$now]);
 					$userid = $conn->lastInsertId();
 
 					$message = "

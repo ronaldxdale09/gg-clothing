@@ -43,6 +43,8 @@
                   <th class="hidden"></th>
                   <th>Date</th>
                   <th>Buyer Name</th>
+                  <th>Complete Address</th>
+                  <th>Contact No.</th>
                   <th>Transaction#</th>
                   <th>Amount</th>
                   <th>Status</th>
@@ -68,6 +70,8 @@
                             <td class='hidden'></td>
                             <td>".date('M d, Y', strtotime($row['sales_date']))."</td>
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
+                            <th>".$row['address']."</th>
+                            <th>".$row['contact_info']."</th>
                             <td>".$row['pay_id']."</td>
                             <td>PHP ".number_format($total, 2)."</td>
                             <th>".$row['order_status']."</th>

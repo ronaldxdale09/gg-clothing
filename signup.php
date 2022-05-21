@@ -45,6 +45,17 @@
         		<input type="email" class="form-control" name="email" placeholder="Email" value="<?php echo (isset($_SESSION['email'])) ? $_SESSION['email'] : '' ?>" required>
         		<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       		</div>
+          <hr>
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" name="address" placeholder="Complete Address" required>
+            <span class="glyphicon glyphicon-home form-control-feedback"></span>
+          </div>
+
+          <div class="form-group has-feedback">
+            <input type="number" class="form-control" name="contact" placeholder="Phone No." required>
+            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+          </div>
+        <hr>
           <div class="form-group has-feedback">
             <input type="password" class="form-control" name="password" placeholder="Password" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>

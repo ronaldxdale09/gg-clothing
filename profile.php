@@ -67,7 +67,7 @@
 	        		</div>
 	        		<div class="box box-solid">
 	        			<div class="box-header with-border">
-	        				<h4 class="box-title"><i class="fa fa-calendar"></i> <b>Transaction History</b></h4>
+	        				<h4 class="box-title"><i class="fa fa-calendar"></i> <b>Purchases</b></h4>
 	        			</div>
 	        			<div class="box-body">
 	        				<table class="table table-bordered" id="example1">
@@ -77,6 +77,7 @@
 	        						<th>Transaction#</th>
 	        						<th>Amount</th>
 	        						<th>Full Details</th>
+									<th>Status</th>
 	        					</thead>
 	        					<tbody>
 	        					<?php
@@ -100,7 +101,8 @@
 	        										<td>".$row['pay_id']."</td>
 	        										<td>PHP ".number_format($total, 2)."</td>
 	        										<td><button class='btn btn-sm btn-flat btn-info transact' data-id='".$row['id']."'><i class='fa fa-search'></i> View</button></td>
-	        									</tr>
+													<td>".$row['order_status']."</td>
+													</tr>
 	        								";
 	        							}
 
