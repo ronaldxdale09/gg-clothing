@@ -75,13 +75,13 @@
                             if($row['order_status'] == 'TO SHIP'){
                                 echo "<form method='POST' action='ship_order.php' style='display:inline;'>
                                     <input name='cart-id' type='hidden' value='".$row['salesid']."'>
-                                    <button type='submit' class='btn btn-success btn-sm btn-flat'><i class='fa fa-search'></i> Ship</button>
+                                    <button type='submit' class='btn btn-success btn-sm btn-flat'><i class='fa fa-truck'></i> Ship</button>
                                 </form>";
                             }
                             else if ($row['order_status'] == 'SHIPPED'){
                                 echo "<form method='POST' action='receive_order.php' style='display:inline;'>
                                     <input name='cart-id' type='hidden' value='".$row['salesid']."'>
-                                    <button type='submit' class='btn btn-warning btn-sm btn-flat'><i class='fa fa-search'></i> Receive</button>
+                                    <button type='submit' class='btn btn-warning btn-sm btn-flat'><i class='fa fa-handshake-o'></i> Receive</button>
                                 </form>";
                             }
                             echo "</td>

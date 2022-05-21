@@ -16,6 +16,7 @@
       <li class="header">REPORTS</li>
       <li><a href="home.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li><a href="sales.php"><i class="fa fa-money"></i> <span>Sales</span></a></li>
+      <li><a href="orders.php"><i class="fa fa-archive"></i> <span>Orders</span></a></li>
       <li class="header">MANAGE</li>
       <li><a href="users.php"><i class="fa fa-users"></i> <span>Users</span></a></li>
       <li class="treeview">
