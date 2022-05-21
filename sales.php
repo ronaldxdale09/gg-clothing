@@ -3,14 +3,15 @@
 
 	if(isset($_GET['pay'])){
 		$payid = $_GET['pay'];
+		$STATUS = 'TO SHIP';
 		$date = date('Y-m-d');
 
 		$conn = $pdo->open();
 
 		try{
 			
-			$stmt = $conn->prepare("INSERT INTO sales (user_id, pay_id, sales_date) VALUES (:user_id, :pay_id, :sales_date)");
-			$stmt->execute(['user_id'=>$user['id'], 'pay_id'=>$payid, 'sales_date'=>$date]);
+			$stmt = $conn->prepare("INSERT INTO sales (user_id, pay_id, sales_date,order_status) VALUES (:user_id, :pay_id, :sales_date, :order_status)");
+			$stmt->execute(['user_id'=>$user['id'], 'pay_id'=>$payid, 'sales_date'=>$date,  'order_status'=>$STATUS,]);
 			$salesid = $conn->lastInsertId();
 			
 			try{
