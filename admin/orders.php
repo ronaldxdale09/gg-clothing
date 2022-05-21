@@ -53,7 +53,7 @@
                     $conn = $pdo->open();
 
                     try{
-                      $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id ORDER BY sales_date DESC");
+                      $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id WHERE NOT order_status='RECEIVED' ORDER BY sales_date DESC");
                       $stmt->execute();
                       foreach($stmt as $row){
                         $stmt = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id WHERE details.sales_id=:id");
@@ -71,7 +71,20 @@
                             <td>".$row['pay_id']."</td>
                             <td>PHP ".number_format($total, 2)."</td>
                             <th>".$row['order_status']."</th>
-                            <td><button type='button' class='btn btn-info btn-sm btn-flat transact' data-id='".$row['salesid']."'><i class='fa fa-search'></i> View</button></td>
+                            <td><button type='button' class='btn btn-info btn-sm btn-flat transact' data-id='".$row['salesid']."'><i class='fa fa-search'></i> View</button>";
+                            if($row['order_status'] == 'TO SHIP'){
+                                echo "<form method='POST' action='ship_order.php' style='display:inline;'>
+                                    <input name='cart-id' type='hidden' value='".$row['salesid']."'>
+                                    <button type='submit' class='btn btn-success btn-sm btn-flat'><i class='fa fa-search'></i> Ship</button>
+                                </form>";
+                            }
+                            else if ($row['order_status'] == 'SHIPPED'){
+                                echo "<form method='POST' action='receive_order.php' style='display:inline;'>
+                                    <input name='cart-id' type='hidden' value='".$row['salesid']."'>
+                                    <button type='submit' class='btn btn-warning btn-sm btn-flat'><i class='fa fa-search'></i> Receive</button>
+                                </form>";
+                            }
+                            echo "</td>
                           </tr>
                         ";
                       }
